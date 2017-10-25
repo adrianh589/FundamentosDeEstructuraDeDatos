@@ -3,7 +3,7 @@ import java.util.Random;
 public class Arreglos {
 	public static void main (String[]args)
 	{
-		//int [] arreglo = {123,654,897,361,2316,89,654,321,847,3654654,4565400}; esto lo puso el profesor como comentario
+		//int [] arreglo = {123,654,897,361,2316,89,654,321,847,3654654,4565400}; 
 		
 		Random rd = new Random();
 		int [] arreglo = new int [100 + rd.nextInt(401)];
