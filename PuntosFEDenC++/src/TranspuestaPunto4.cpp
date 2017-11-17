@@ -22,7 +22,8 @@ int main()
 
     for(i =0; i<n;i++)
     {
-    	for(j=0; j<n;j++){
+    	for(j=0; j<n;j++)
+    	{
     		cin>>numero;
     		matriz[i][j]=numero;
     	}
@@ -31,21 +32,25 @@ int main()
 
     cout<<"La matriz original es"<<endl;
 
-    for(i =0; i<n;i++) {
-            	for(j=0; j<n;j++){
+    for(i =0; i<n;i++)
+    {
+            	for(j=0; j<n;j++)
+            	{
             		cout<<matriz[i][j]<<" ";
             	}
                    cout<<""<<endl;
-            }
+    }
 
     cout<<"La transpuesta de esta matriz es"<<endl;
 
-    for(i =0; i<n;i++) {
-        	for(j=0; j<n;j++){
+    for(i =0; i<n;i++)
+    {
+        	for(j=0; j<n;j++)
+        	{
         		cout<<matriz[j][i]<<" ";
         	}
                  cout<<""<<endl;
-        }
+     }
 
 	return 0;
 
