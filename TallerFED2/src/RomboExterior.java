@@ -1,102 +1,169 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Random;
 
 public class RomboExterior {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
-
-		BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
-		Random rnd = new Random();
+        
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader br = new BufferedReader (isr);//Buffer for read the length of the matrix
+		BufferedWriter bw =new BufferedWriter(new OutputStreamWriter(System.out));//Buffer to write in console
+		Random rnd = new Random();//Random class to generate random numbers
+		
 		System.out.println("Introduzca el tamaño de la matriz");
-		int m=Integer.parseInt(br.readLine());
-		int numeros[][]= new int [m][m];
-		int nueva_matriz[][]=new int [m][m];
+		
+		int m=Integer.parseInt(br.readLine());//Read the length of the matrix in console
+		int numbers[][]= new int [m][m];//In this matrix add a random numbers
+		int new_matrix[][]=new int [m][m];//Create a empty matrix to extract numbers in the matrix "numbers"
 		
 		
-		for (int i=0; i<m; i++) {
-			for (int j=0;j<m;j++) {
-				numeros [i][j]=rnd.nextInt(9)+1;
-				System.out.print(numeros[i][j]+" ");
-			}
-			System.out.println("");
-		}
-		
-		System.out.println("");
-		System.out.println("El rombo exterior es");
-		
-		
-		int mitad=numeros.length/2;
-		//Esta es la parte superior izquierda de la figura*****************
-		for (int i=0; i<=numeros.length/2; i++) //Este ya esta hecho*****
+		//Fill matrix with random numbers
+		for (int i=0; i<m; i++) 
 		{
-			for (int j=0;j<mitad-((m/2)-m/2);j++) 
+			for (int j=0;j<m;j++)
 			{
-				nueva_matriz[i][j]=numeros[i][j];
-				//System.out.print(numeros[i][j]+" ");
+				numbers [i][j]=rnd.nextInt(9)+1;
+				bw.write(numbers[i][j]+" ");
+				bw.flush();
 			}
-			//System.out.println("");
-			mitad--;
+			bw.write("\n");
+			bw.flush();
 		}
 		
-		mitad=numeros.length/2;
+		bw.write("\nEl rombo exterior es:");
+		bw.flush();
 		
-		//Esta es la parte superior derecha de la figura
-		for (int i=0; i<numeros.length; i++) //ESTE ESTA HECHO
+		
+		int half=numbers.length/2;//Create a variable half to move the index j 
+		
+		if(m%2==0) 
+		{//If the number entered by the user is even...
+			
+		//Upper left of the diamond
+		for (int i=0; i<=numbers.length/2; i++) 
 		{
-			for (int j=mitad;j<numeros.length;j++) 
+			for (int j=0;j<half-((m/2)-m/2);j++) 
 			{
-				nueva_matriz[i][j]=numeros[i][j];
-				//System.out.print(numeros[i][j]+" ");
+				new_matrix[i][j]=numbers[i][j];//add to new_matrix
 			}
-			//System.out.println("");
-			mitad++;
+			half--;
 		}
 		
-		mitad=numeros.length/2;
+		half=numbers.length/2;
 		
-		//Esta es la parte inferior izquierda de la figura
-		for (int i=numeros.length/2; i<numeros.length; i++) //Este ya esta hecho
+		//Upper right of the diamond
+		for (int i=0; i<numbers.length; i++) 
 		{
-			for (int j=0;j<mitad-((m/2)-1);j++) 
+			for (int j=half;j<numbers.length;j++) 
 			{
-				nueva_matriz[i][j]=numeros[i][j];
-				//System.out.print(numeros[i][j]+" ");
-				
+				new_matrix[i][j]=numbers[i][j];//add to new_matrix
 			}
-			//System.out.println("");
-			mitad++;
+			
+			half++;
 		}
 		
-		mitad=numeros.length/2;
+		half=numbers.length/2;
 		
-		//Esta es la parte inferior derecha de la figura
-		for (int i=numeros.length/2; i<numeros.length; i++) 
+		//Lower left of the diamond
+		for (int i=numbers.length/2; i<numbers.length; i++) 
 		{
-			for (int j=mitad+((m/2)-1);j<numeros.length;j++) 
+			for (int j=0;j<half-((m/2)-1);j++) 
 			{
-				nueva_matriz[i][j]=numeros[i][j];
-				//System.out.print(numeros[i][j]+" ");
+				new_matrix[i][j]=numbers[i][j];//add to new_matrix
 			}
-			//System.out.println("");
-			mitad--;
+			half++;
 		}
 		
+		half=numbers.length/2;
 		
+		//Lower right of the diamond
+		for (int i=numbers.length/2; i<numbers.length; i++) 
+		{
+			for (int j=half+((m/2)-1);j<numbers.length;j++) 
+			{
+				new_matrix[i][j]=numbers[i][j];//add to new_matrix
+			}
+			
+			half--;
+		}
 		
-		System.out.println("");
-		System.out.println("");
-		for(int i=0;i<numeros.length;i++) {
-			for(int j=0; j<numeros.length;j++) {
-				if(nueva_matriz[i][j]==0)
+	   }else 
+	     {//If the number entered by the user is odd...
+		
+		//Upper left of the diamond
+				for (int i=0; i<numbers.length/2; i++) 
 				{
-					System.out.print("  ");
-				}else{
-					System.out.print(nueva_matriz[i][j]+" ");
-				     }
+					for (int j=0;j<half-((m/2)-m/2)+1;j++) 
+					{
+						new_matrix[i][j]=numbers[i][j];//add to new_matrix
+					}
+					half--;
+				}
+				
+				half=numbers.length/2;
+				
+				//Upper right of the diamond
+				for (int i=0; i<=numbers.length; i++) 
+				{
+					for (int j=half;j<numbers.length;j++) 
+					{
+						new_matrix[i][j]=numbers[i][j];//add to new_matrix
+					}
+					half++;
+				}
+				
+				half=numbers.length/2;
+				
+				//Lower left of the diamond
+				for (int i=numbers.length/2; i<numbers.length; i++) 
+				{
+					for (int j=0;j<half-((m/2)-1);j++) 
+					{
+						new_matrix[i][j]=numbers[i][j];//add to new_matrix
+						
+					}
+					half++;
+				}
+				
+				half=numbers.length/2;
+				
+				//Lower right of the diamond
+				for (int i=numbers.length/2; i<numbers.length; i++) 
+				{
+					for (int j=half+(m/2);j<numbers.length;j++) 
+					{
+						new_matrix[i][j]=numbers[i][j];//add to new matrix
+					}
+					half--;
+				}
+			
+	          }	
+		
+		
+		bw.write("\n\n");
+		bw.flush();
+		
+		//Print in diamond figure
+		for(int i=0;i<numbers.length;i++) 
+		{
+			for(int j=0; j<numbers.length;j++) 
+			{
+				if(new_matrix[i][j]==0)//Print a double space if in that position there is no number.
+				{
+					bw.write("  ");
+					bw.flush();
+				}else
+				    {
+                       bw.write(new_matrix[i][j]+" ");
+                       bw.flush();
+				    }
 			}
-			System.out.println("");
+			bw.write("\n");
+			bw.flush();
 		}
 		
 
