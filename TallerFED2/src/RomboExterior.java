@@ -14,7 +14,8 @@ public class RomboExterior {
 		BufferedWriter bw =new BufferedWriter(new OutputStreamWriter(System.out));//Buffer to write in console
 		Random rnd = new Random();//Random class to generate random numbers
 		
-		System.out.println("Introduzca el tamaño de la matriz");
+		bw.write("Introduzca el tamaño de la matriz");
+		bw.flush();
 		
 		int m=Integer.parseInt(br.readLine());//Read the length of the matrix in console
 		int numbers[][]= new int [m][m];//In this matrix add a random numbers
@@ -53,7 +54,7 @@ public class RomboExterior {
 			half--;
 		}
 		
-		half=numbers.length/2;
+		half=numbers.length/2;//reinitialize the variable half
 		
 		//Upper right of the diamond
 		for (int i=0; i<numbers.length; i++) 
@@ -62,11 +63,10 @@ public class RomboExterior {
 			{
 				new_matrix[i][j]=numbers[i][j];//add to new_matrix
 			}
-			
 			half++;
 		}
 		
-		half=numbers.length/2;
+		half=numbers.length/2;//reinitialize the variable half
 		
 		//Lower left of the diamond
 		for (int i=numbers.length/2; i<numbers.length; i++) 
@@ -78,7 +78,7 @@ public class RomboExterior {
 			half++;
 		}
 		
-		half=numbers.length/2;
+		half=numbers.length/2;//reinitialize the variable half
 		
 		//Lower right of the diamond
 		for (int i=numbers.length/2; i<numbers.length; i++) 
@@ -87,21 +87,21 @@ public class RomboExterior {
 			{
 				new_matrix[i][j]=numbers[i][j];//add to new_matrix
 			}
-			
 			half--;
 		}
 		
-	   }else 
-	     {//If the number entered by the user is odd...
 		
-		//Upper left of the diamond
+	   }else //If the number entered by the user is odd...
+	      {
+		
+		        //Upper left of the diamond
 				for (int i=0; i<numbers.length/2; i++) 
 				{
 					for (int j=0;j<half-((m/2)-m/2)+1;j++) 
 					{
 						new_matrix[i][j]=numbers[i][j];//add to new_matrix
 					}
-					half--;
+					half--;//reinitialize the variable half
 				}
 				
 				half=numbers.length/2;
@@ -113,7 +113,7 @@ public class RomboExterior {
 					{
 						new_matrix[i][j]=numbers[i][j];//add to new_matrix
 					}
-					half++;
+					half++;//reinitialize the variable half
 				}
 				
 				half=numbers.length/2;
@@ -126,7 +126,7 @@ public class RomboExterior {
 						new_matrix[i][j]=numbers[i][j];//add to new_matrix
 						
 					}
-					half++;
+					half++;//reinitialize the variable half
 				}
 				
 				half=numbers.length/2;
@@ -138,10 +138,10 @@ public class RomboExterior {
 					{
 						new_matrix[i][j]=numbers[i][j];//add to new matrix
 					}
-					half--;
+					half--;//reinitialize the variable half
 				}
 			
-	          }	
+	         }	
 		
 		
 		bw.write("\n\n");
