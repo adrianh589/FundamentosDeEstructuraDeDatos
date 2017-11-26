@@ -28,19 +28,15 @@ public class RomboInterior {
 		
 		int mitad=numeros.length/2;
 		
-		//Si el numero ingresado es par, hara el siguiente procedimiento indicando que la matriz es par
+		    //Si el numero ingresado es par, hara el siguiente procedimiento indicando que la matriz es par
 		
-		
-			
+			if(m%2==0) {
 			//Este procedimiento imprime la parte superior izquierda del rombo*********
 			for (int i=0; i<numeros.length/2; i++) 
 			{
 				for (int j=mitad-1;j<numeros.length/2;j++) 
 				{
 					nueva_matriz[i][j]=numeros[i][j];
-					System.out.print(numeros[i][j]+" "); 
-					
-					
 				}
 				mitad--;
 			}
@@ -54,20 +50,18 @@ public class RomboInterior {
 				for (int j=numeros.length/2;j<m-((numeros.length/2)-1);j++) 
 				{
 					nueva_matriz[i][j]=numeros[i][j];
-					System.out.print(numeros[i][j]+" ");
 				}
 				m++;
 			}
 			
 			m=numeros.length;
 			
-			//Este procedimiento imprime la parte inferior izquierda del rombo************
+			//Este procedimiento imprime la parte inferior izquierda del rombo
 			for (int i=numeros.length/2; i<m; i++) 
 			{
 				for (int j=i-(m/2);j<mitad;j++) 
 				{
 					nueva_matriz[i][j]=numeros[i][j];
-					System.out.print(numeros[i][j]+" "); //ESTE YA ESTA HECHO***********
 				}
 			}
 			
@@ -79,13 +73,60 @@ public class RomboInterior {
 				for (int j=mitad;j<m;j++) 
 				{
 					nueva_matriz[i][j]=numeros[i][j];
-					System.out.print(numeros[i][j]+" ");
-					
 				}
 				m--;
 			}
 			
-		
+			//Si el numero ingresado pr el usuario es impar hara el siguiente procedimiento
+			
+			}else {
+				//Este procedimiento imprime la parte superior izquierda del rombo
+				for (int i=1; i<numeros.length/2; i++) 
+				{
+					for (int j=mitad-1;j<numeros.length/2;j++) 
+					{
+						nueva_matriz[i][j]=numeros[i][j];
+					}
+					mitad--;
+				}
+				
+				mitad=numeros.length/2;
+			
+				
+			//Este procedimiento imprime la parte superior derecha del rombo
+				for (int i=0; i<numeros.length/2; i++) 
+				{
+					for (int j=numeros.length/2;j<m-((numeros.length/2));j++) 
+					{
+						nueva_matriz[i][j]=numeros[i][j];
+					}
+					m++;
+				}
+				
+				m=numeros.length;
+				
+				//Este procedimiento imprime la parte inferior izquierda del rombo
+				for (int i=numeros.length/2; i<m; i++) 
+				{
+					for (int j=i-(m/2);j<mitad;j++) 
+					{
+						nueva_matriz[i][j]=numeros[i][j];
+					}
+				}
+				
+				
+				
+				//Este procedimiento imprime la parte inferior derecha del rombo
+				for (int i=mitad; i<numeros.length; i++) 
+				{
+					for (int j=mitad;j<m;j++) 
+					{
+						nueva_matriz[i][j]=numeros[i][j];
+					}
+					m--;
+				}
+				
+			}
 			
 		System.out.println("");
 		System.out.println("");
