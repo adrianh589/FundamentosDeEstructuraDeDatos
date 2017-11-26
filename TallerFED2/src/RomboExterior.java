@@ -10,7 +10,7 @@ public class RomboExterior {
 	public static void main(String[] args) throws NumberFormatException, IOException {
         
 		InputStreamReader isr = new InputStreamReader(System.in);
-		BufferedReader br = new BufferedReader (isr);//Buffer for read the length of the matrix
+		BufferedReader br = new BufferedReader (isr);//Buffer to read the length of the matrix
 		BufferedWriter bw =new BufferedWriter(new OutputStreamWriter(System.out));//Buffer to write in console
 		Random rnd = new Random();//Random class to generate random numbers
 		
