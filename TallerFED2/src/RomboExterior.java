@@ -14,7 +14,7 @@ public class RomboExterior {
 		BufferedWriter bw =new BufferedWriter(new OutputStreamWriter(System.out));//Buffer to write in console
 		Random rnd = new Random();//Random class to generate random numbers
 		
-		bw.write("Introduzca el tamaño de la matriz");
+		bw.write("Introduzca el tamaño de la matriz: ");
 		bw.flush();
 		
 		int m=Integer.parseInt(br.readLine());//Read the length of the matrix in console
