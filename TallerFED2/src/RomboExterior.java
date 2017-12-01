@@ -12,22 +12,28 @@ public class RomboExterior {
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader (isr);//Buffer to read the length of the matrix
 		BufferedWriter bw =new BufferedWriter(new OutputStreamWriter(System.out));//Buffer to write in console
-		Random rnd = new Random();//Random class to generate random numbers
 		
 		bw.write("Introduzca el tamaño de la matriz: ");
 		bw.flush();
-		
 		int m=Integer.parseInt(br.readLine());//Read the length of the matrix in console
-		int numbers[][]= new int [m][m];//In this matrix add a random numbers
+		
+		
+		bw.write("Introduzca los numeros separados por comas diferente de 0");
+		bw.flush();
+		
+		String[] numbers_commas=br.readLine().split(",");//Array to read numbers in the console separated with commas 
+		int numbers[][]= new int [m][m];//In this matrix add a numbers  sepparated with commas
 		int new_matrix[][]=new int [m][m];//Create a empty matrix to extract numbers in the matrix "numbers"
+		int cont=0;//Create a variable cont to move the index in the array "numbers_commas"
 		
 		
-		//Fill matrix with random numbers
+		//Fill matrix with numbers
 		for (int i=0; i<m; i++) 
 		{
 			for (int j=0;j<m;j++)
 			{
-				numbers [i][j]=rnd.nextInt(9)+1;
+				numbers [i][j]=Integer.parseInt(numbers_commas[cont]);
+				cont++;
 				bw.write(numbers[i][j]+" ");
 				bw.flush();
 			}
